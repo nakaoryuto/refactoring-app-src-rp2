@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import jp.co.sss.crud.db.DBController;
+import jp.co.sss.crud.util.ConstantMsg;
+import jp.co.sss.crud.util.ConstantValue;
 
 /**
  * 社員情報管理システム開始クラス 社員情報管理システムはこのクラスから始まる。<br/>
@@ -31,15 +33,15 @@ public class MainSystem {
 
 		do {
 			// メニューの表示
-			System.out.println("=== 社員管理システム ===");
-			System.out.println("1.全件表示");
-			System.out.println("2.社員名検索");
-			System.out.println("3.部署ID検索");
-			System.out.println("4.新規登録");
-			System.out.println("5.更新");
-			System.out.println("6.削除");
-			System.out.println("7.終了");
-			System.out.print("メニュー番号を入力してください：");
+			System.out.println(ConstantMsg.MSG_SYSTEM_TITLE);
+			System.out.println(ConstantMsg.MSG_MENU_1);
+			System.out.println(ConstantMsg.MSG_MENU_2);
+			System.out.println(ConstantMsg.MSG_MENU_3);
+			System.out.println(ConstantMsg.MSG_MENU_4);
+			System.out.println(ConstantMsg.MSG_MENU_5);
+			System.out.println(ConstantMsg.MSG_MENU_6);
+			System.out.println(ConstantMsg.MSG_MENU_7);
+			System.out.print(ConstantMsg.MSG_INPUT_MENU_NO);
 
 			// メニュー番号の入力
 			String selectedMenuNumberString = consoleReader.readLine();
@@ -47,56 +49,56 @@ public class MainSystem {
 
 			// 機能の呼出
 			switch (selectedMenuNumber) {
-			case 1:
+			case ConstantValue.MENU_ALL_FIND:
 				DBController.findAllEmployees();
 				break;
 
-			case 2:
-				System.out.print("社員名:");
+			case ConstantValue.MENU_FIND_BY_NAME:
+				System.out.print(ConstantMsg.MSG_INPUT_EMP_NAME_SIMPLE);
 				DBController.findEmployeesByNameFromConsole();
 				break;
 
-			case 3:
-				System.out.print("部署ID(1:営業部、2:経理部、3:総務部)を入力してください:");
+			case ConstantValue.MENU_FIND_BY_DEPT:
+				System.out.print(ConstantMsg.MSG_INPUT_DEPT_ID_SEARCH);
 				String departmentIdString = consoleReader.readLine();
 				DBController.findEmployeesByDepartmentId(departmentIdString);
 				break;
 
-			case 4:
-				System.out.print("社員名:");
+			case ConstantValue.MENU_INSERT:
+				System.out.print(ConstantMsg.MSG_INPUT_EMP_NAME_SIMPLE);
 				String employeeName = consoleReader.readLine();
 
-				System.out.print("性別(0:その他, 1:男性, 2:女性, 9:回答なし):");
+				System.out.print(ConstantMsg.MSG_INPUT_GENDER_SIMPLE);
 				String genderCodeString = consoleReader.readLine();
 
-				System.out.print("生年月日(西暦年/月/日):");
+				System.out.print(ConstantMsg.MSG_INPUT_BIRTHDAY_SIMPLE);
 				String birthdayString = consoleReader.readLine();
 
-				System.out.print("部署ID(1:営業部、2:経理部、3:総務部):");
+				System.out.print(ConstantMsg.MSG_INPUT_DEPT_ID_SIMPLE);
 				String departmentIdStringForInsert = consoleReader.readLine();
 
 				DBController.insertEmployee(employeeName, genderCodeString, birthdayString,
 						departmentIdStringForInsert);
 				break;
 
-			case 5:
-				System.out.print("更新する社員の社員IDを入力してください：");
+			case ConstantValue.MENU_UPDATE:
+				System.out.print(ConstantMsg.MSG_INPUT_UPDATE_EMP_ID);
 				String employeeIdStringForUpdate = consoleReader.readLine();
 
 				Integer.parseInt(employeeIdStringForUpdate);
 
 				DBController.updateEmployeeFromConsole(employeeIdStringForUpdate);
-				System.out.println("社員情報を更新しました");
+				System.out.println(ConstantMsg.MSG_UPDATE_COMPLETE);
 				break;
 
-			case 6:
-				System.out.print("削除する社員の社員IDを入力してください：");
+			case ConstantValue.MENU_DELETE:
+				System.out.print(ConstantMsg.MSG_INPUT_DELETE_EMP_ID);
 				DBController.deleteEmployeeFromConsole();
 				break;
 
 			}
-		} while (selectedMenuNumber != 7);
+		} while (selectedMenuNumber != ConstantValue.MENU_EXIT);
 
-		System.out.println("システムを終了します。");
+		System.out.println(ConstantMsg.MSG_SYSTEM_EXIT);
 	}
 }
