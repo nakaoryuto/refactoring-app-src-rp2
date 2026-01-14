@@ -256,16 +256,16 @@ public class DBController {
 			connection = DBManager.getConnection();
 			preparedStatement = connection.prepareStatement(ConstantSQL.SQL_UPDATE);
 
-			System.out.print(ConstantMsg.MSG_INPUT_EMP_NAME_COLON);
+			System.out.print(ConstantMsg.MSG_INPUT_EMP_NAME);
 			String employeeName = consoleReader.readLine();
 
-			System.out.print(ConstantMsg.MSG_INPUT_GENDER_COLON);
+			System.out.print(ConstantMsg.MSG_INPUT_GENDER);
 			String genderCodeString = consoleReader.readLine();
 
-			System.out.print(ConstantMsg.MSG_INPUT_BIRTHDAY_COLON);
+			System.out.print(ConstantMsg.MSG_INPUT_BIRTHDAY);
 			String birthdayString = consoleReader.readLine();
 
-			System.out.print(ConstantMsg.MSG_INPUT_DEPT_ID_COLON);
+			System.out.print(ConstantMsg.MSG_INPUT_DEPT_ID_SEARCH);
 			String departmentIdString = consoleReader.readLine();
 
 			preparedStatement.setString(1, employeeName);

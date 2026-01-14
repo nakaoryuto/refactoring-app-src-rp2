@@ -1,22 +1,26 @@
 package jp.co.sss.crud.util;
 
 /**
- * 数値などの定数をまとめたクラス(2:マジックナンバー、メッセージの定数化)
+ * 数値等の定数をまとめたクラス
  */
 public class ConstantValue {
 
-	/** インスタンス化を禁止 */
 	private ConstantValue() {
 	}
 
-	// ----- メニュー番号 -----
-	public static final int MENU_ALL_FIND = 1;
-	public static final int MENU_FIND_BY_NAME = 2;
-	public static final int MENU_FIND_BY_DEPT = 3;
+	// ----- メニュー番号（IEmployeeServiceで参照する名前） -----
+	public static final int MENU_SELECT_ALL = 1;
+	public static final int MENU_SEARCH_EMP_NAME = 2;
+	public static final int MENU_SEARCH_DEPT_ID = 3;
 	public static final int MENU_INSERT = 4;
 	public static final int MENU_UPDATE = 5;
 	public static final int MENU_DELETE = 6;
 	public static final int MENU_EXIT = 7;
+
+	// ===== 互換用（MainSystemが参照している定数名） =====
+	public static final int MENU_ALL_FIND = MENU_SELECT_ALL;
+	public static final int MENU_FIND_BY_NAME = MENU_SEARCH_EMP_NAME;
+	public static final int MENU_FIND_BY_DEPT = MENU_SEARCH_DEPT_ID;
 
 	// ----- 性別コード -----
 	public static final int GENDER_NO_ANSWER = 0;
